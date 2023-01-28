@@ -369,7 +369,7 @@ app.post("/razorpay/verify",async(req,res)=>{
 
  await db.collection("users").findOneAndUpdate({email:req.body.user},
                                               {$push:{orders:{$each:[req.body.item],
-                                               $sort:{date:-1}}}})
+                                               $sort:{time:-1}}}})
 
  let user = await db.collection("users").findOne({email:req.body.user})
 
