@@ -394,7 +394,7 @@ app.post("/razorpay/verify",async(req,res)=>{
     }
   });
 
-  app.get('/users',async(req,res)=>{
+  app.get('/users',Auth,async(req,res)=>{
     try {
         let connection = await mongoclient.connect(URL)
 
