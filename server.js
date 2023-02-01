@@ -303,8 +303,8 @@ app.get('/filter/:collection', async(req,res)=>{
         let db = connection.db(DB)
 
         let {min,max} = req.query
-
-        if(max == 800){
+        
+        if(max === "800"){
             let filteredItems = await db.collection(req.params.collection).find({price:{$gte:min}}).sort({price:1}).toArray()
 
             res.json(filteredItems)
@@ -404,6 +404,7 @@ app.post("/razorpay/verify",async(req,res)=>{
 
         res.json(user.orders)
     } catch (error) {
+       
         res.status(500).json({message:"Sorry something went wrong,try again"})
     }
   })
