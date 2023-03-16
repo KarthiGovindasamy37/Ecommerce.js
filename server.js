@@ -232,7 +232,6 @@ app.get('/itemlist/:name', async(req,res) =>{
 
         res.json(list)
     } catch (error) {
-        
        res.status(500).json({message:"Something went wrong,please try again"}) 
     }
 })
@@ -418,10 +417,11 @@ app.post("/razorpay/verify",async(req,res)=>{
         let {collection,value} = req.params
 
         let regexp = new RegExp(`${value}`,"i")
-
+        
         let products = await db.collection(collection).find({name:{$regex:regexp}}).sort({price:1}).toArray()
 
         res.json(products)
+        
     } catch (error) {
         res.status(500).json({message:"Sorry something went wrong,try again"})
     }
