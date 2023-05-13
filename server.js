@@ -27,7 +27,9 @@ key_secret:RAZORPAY_SECRET
 });
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin : "https://taupe-syrniki-a56bd2.netlify.app"
+}))
 
 
 let forgotMail=async(res,temp,mail)=>{
